@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { posts } from '../data/posts';
+---
+
+<BaseLayout title="Actualidades - Huellas de Barrio">
+  <Header currentPage="actualidades" />
+
+  <main>
+    <!-- Banner -->
+    <div
+      class="container-fluid"
+      style="
+        background: linear-gradient(135deg, #004200 0%, #006600 100%);
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <h2 class="text-white text-center m-0">Actualidades</h2>
+    </div>
+
+    <!-- Contenedor Blog -->
+    <div class="container" style="padding: 30px 15px">
+      <div class="row">
+        <!-- Columna 8: Tarjetas -->
+        <div
+          class="col-lg-8 col-md-12 order-lg-1 order-md-2 order-sm-2 order-2 "
+        >
+          <!-- Primera fila -->
+          <div class="row mb-4">
+            <BlogCard
+              title={posts[0].title}
+              date={posts[0].date}
+              author={posts[0].author}
+              excerpt={posts[0].introduction.substring(0, 150) + '...'}
+              image={posts[0].image}
+              slug={posts[0].slug}
+            />
+            <BlogCard
+              title={posts[1].title}
+              date={posts[1].date}
+              author={posts[1].author}
+              excerpt={posts[1].introduction.substring(0, 150) + '...'}
+              image={posts[1].image}
+              slug={posts[1].slug}
+            />
+          </div>
+
+          <!-- Segunda fila -->
+      <div class="row">
+            <BlogCard
+              title={posts[2].title}
+              date={posts[2].date}
+              author={posts[2].author}
+              excerpt={posts[2].introduction.substring(0, 150) + '...'}
+              image={posts[2].image}
+              slug={posts[2].slug}
+            />
+            <BlogCard
+              title={posts[3].title}
+              date={posts[3].date}
+              author={posts[3].author}
+              excerpt={posts[3].introduction.substring(0, 150) + '...'}
+              image={posts[3].image}
+              slug={posts[3].slug}
+            />
+     </div>
+        </div>
+
+        
+
+        <!-- Columna 4: Sidebar -->
+        <div
+          class="col-lg-4 col-md-12 order-lg-2 order-md-1 order-sm-1 order-1"
+        >
+          <div
+            style="
+              background: #f8f6f2;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h3 style="color: #004200; margin-bottom: 15px">Categorías</h3>
+            <ul style="list-style: none; padding: 0">
+              <li style="padding: 10px 0; border-bottom: 1px solid #ddd">
+                <a href="#" style="color: #004200; text-decoration: none"
+                  >Investigación</a
+                >
+              </li>
+              <li style="padding: 10px 0; border-bottom: 1px solid #ddd">
+                <a href="#" style="color: #004200; text-decoration: none"
+                  >Participación Comunitaria</a
+                >
+              </li>
+              <li style="padding: 10px 0; border-bottom: 1px solid #ddd">
+                <a href="#" style="color: #004200; text-decoration: none"
+                  >Memoria Urbana</a
+                >
+              </li>
+              <li style="padding: 10px 0">
+                <a href="#" style="color: #004200; text-decoration: none"
+                  >Transformación Social</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="mb-4"
+            style="
+              background: #f8f6f2;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              margin-top: 20px;
+            "
+          >
+            <h3 style="color: #004200; margin-bottom: 15px">
+              Publicaciones Recientes
+            </h3>
+            <p style="font-size: 14px; color: #555; margin-bottom: 10px">
+              <strong>Patrimonios, memorias e historias</strong> que tejen la
+              periferia urbana latinoamericana.
+            </p>
+            <p style="font-size: 14px; color: #555">
+              <strong>Urbanismo social en Medellín</strong> entre la garantía
+              de derechos y la complejidad territorial.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .blog-card {
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .blog-card:hover {
+    transform: scale(1.05);
+  }
+</style>
