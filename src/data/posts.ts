@@ -89,7 +89,47 @@ export const posts: Post[] = [
     quote: 'Las periferias urbanas comparten historias de resistencia y esperanza.',
     quoteAuthor: 'Grupo MASO',
     conclusion: 'El estudio comparativo revela que, a pesar de las diferencias culturales y políticas, las comunidades periféricas desarrollan estrategias similares de apropiación territorial y transformación social.'
-  }
+  },
+  {
+  id: 5,
+  slug: 'titulo-de-la-nueva-entrada',
+  title: 'Título de la Nueva Entrada',
+  subtitle: 'Subtítulo descriptivo',
+  image: 'https://raw.githubusercontent.com/satelite30/blog-Popular-es/refs/heads/main/WhatsApp%20Image%202026-01-28%20at%2012.38.10%20PM.jpeg',
+  date: '22 de marzo de 2026',
+  author: 'Grupo MASO',
+  category: 'Investigación',  // O la categoría que prefieras
+  readTime: '5 min',
+  tags: ['Nuevo', 'Tema'],
+  introduction: 'Texto introductorio...',
+  contextTitle: 'Contexto',
+  context: 'Desarrollo del contexto...',
+  quote: 'Cita relevante.',
+  quoteAuthor: 'Autor de la cita',
+  conclusion: 'Conclusión final.'
+},
+
+{
+  id: 6,
+  slug: 'nueva-entrada 2026',
+  title: 'Título de la Nueva Entrada',
+  subtitle: 'Subtítulo descriptivo',
+  image: 'https://raw.githubusercontent.com/satelite30/blog-Popular-es/refs/heads/main/WhatsApp%20Image%202026-01-28%20at%2012.50.57%20PM.jpeg',
+  date: '22 de marzo de 2026',
+  author: 'Grupo MASO',
+  category: 'Investigación',  // O la categoría que prefieras
+  readTime: '5 min',
+  tags: ['Nuevo', 'Tema'],
+  introduction: 'Texto introductorio...',
+  contextTitle: 'Contexto',
+  context: 'Desarrollo del contexto...',
+  quote: 'Cita relevante.',
+  quoteAuthor: 'Autor de la cita',
+  conclusion: 'Conclusión final.'
+}
+  
+  
+
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
@@ -101,15 +141,30 @@ export function getPostById(id: number): Post | undefined {
 }
 
 export function getNextPost(currentId: number): Post {
-  const nextId = currentId === 4 ? 1 : currentId + 1;
+  const totalPosts = posts.length;
+  const nextId = currentId === totalPosts ? 1 : currentId + 1;
   return getPostById(nextId)!;
 }
 
 export function getPrevPost(currentId: number): Post {
-  const prevId = currentId === 1 ? 4 : currentId - 1;
+  const totalPosts = posts.length;
+  const prevId = currentId === 1 ? totalPosts : currentId - 1;
   return getPostById(prevId)!;
 }
 
 export function getRecommendedPosts(currentId: number): Post[] {
   return posts.filter(post => post.id !== currentId);
+}
+
+// Función para generar slug automáticamente a partir del título
+export function slugify(text: string): string {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')           // Reemplaza espacios por guiones
+    .replace(/[^\w\-]+/g, '')       // Remueve caracteres no alfanuméricos excepto guiones
+    .replace(/\-\-+/g, '-')         // Reemplaza múltiples guiones por uno
+    .replace(/^-+/, '')             // Remueve guiones al inicio
+    .replace(/-+$/, '');            // Remueve guiones al final
 }

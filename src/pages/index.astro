@@ -4,6 +4,19 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BlogCard from '../components/BlogCard.astro';
 import { posts } from '../data/posts';
+
+// Si en el futuro usas un category real, puedes mapearlo desde URL/prop.
+const categoryActualidades = 'actualidades';
+// Actualmente los posts tienen categorías como "Investigación", "Participación Comunitaria" ...
+// Para mostrar tarjetas en la página de actualidades, usamos todos los posts.
+const publicaciones = posts; // o posts.filter(post => post.category === 'Investigación') según tu UI
+const categories = [
+  'Investigación',
+  'Participación Comunitaria',
+  'Memoria Urbana',
+  'Transformación Social',
+];
+const recentPosts = posts.slice().reverse().slice(0, 3); // Últimos 4 posts en orden inverso
 ---
 
 <BaseLayout title="Actualidades - Huellas de Barrio">
@@ -29,47 +42,26 @@ import { posts } from '../data/posts';
       <div class="row">
         <!-- Columna 8: Tarjetas -->
         <div
-          class="col-lg-8 col-md-12 order-lg-1 order-md-2 order-sm-2 order-2 "
+          class="col-lg-8 col-md-12 order-lg-1 order-md-2 order-sm-2 order-2  "
         >
-          <!-- Primera fila -->
-          <div class="row mb-4">
-            <BlogCard
-              title={posts[0].title}
-              date={posts[0].date}
-              author={posts[0].author}
-              excerpt={posts[0].introduction.substring(0, 150) + '...'}
-              image={posts[0].image}
-              slug={posts[0].slug}
-            />
-            <BlogCard
-              title={posts[1].title}
-              date={posts[1].date}
-              author={posts[1].author}
-              excerpt={posts[1].introduction.substring(0, 150) + '...'}
-              image={posts[1].image}
-              slug={posts[1].slug}
-            />
+          <div class="row">
+            {publicaciones.map((post) => (
+              <div class="col-md-12 mb-4" key={post.slug}>
+                <BlogCard
+                  title={post.title}
+                  subtitle={post.subtitle}
+                  date={post.date}
+                  author={post.author}
+                  readTime={post.readTime}
+                  category={post.category}
+                  tags={post.tags}
+                  excerpt={post.introduction.substring(0, 150) + '...'}
+                  image={post.image}
+                  slug={post.slug}
+                />
+              </div>
+            ))}
           </div>
-
-          <!-- Segunda fila -->
-      <div class="row">
-            <BlogCard
-              title={posts[2].title}
-              date={posts[2].date}
-              author={posts[2].author}
-              excerpt={posts[2].introduction.substring(0, 150) + '...'}
-              image={posts[2].image}
-              slug={posts[2].slug}
-            />
-            <BlogCard
-              title={posts[3].title}
-              date={posts[3].date}
-              author={posts[3].author}
-              excerpt={posts[3].introduction.substring(0, 150) + '...'}
-              image={posts[3].image}
-              slug={posts[3].slug}
-            />
-     </div>
         </div>
 
         
@@ -88,26 +80,13 @@ import { posts } from '../data/posts';
           >
             <h3 style="color: #004200; margin-bottom: 15px">Categorías</h3>
             <ul style="list-style: none; padding: 0">
-              <li style="padding: 10px 0; border-bottom: 1px solid #ddd">
-                <a href="#" style="color: #004200; text-decoration: none"
-                  >Investigación</a
-                >
-              </li>
-              <li style="padding: 10px 0; border-bottom: 1px solid #ddd">
-                <a href="#" style="color: #004200; text-decoration: none"
-                  >Participación Comunitaria</a
-                >
-              </li>
-              <li style="padding: 10px 0; border-bottom: 1px solid #ddd">
-                <a href="#" style="color: #004200; text-decoration: none"
-                  >Memoria Urbana</a
-                >
-              </li>
-              <li style="padding: 10px 0">
-                <a href="#" style="color: #004200; text-decoration: none"
-                  >Transformación Social</a
-                >
-              </li>
+              {categories.map((category) => (
+                <li style="padding: 10px 0; border-bottom: 1px solid #ddd" key={category}>
+                  <a href="#" style="color: #004200; text-decoration: none">
+                    {category}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -124,14 +103,15 @@ import { posts } from '../data/posts';
             <h3 style="color: #004200; margin-bottom: 15px">
               Publicaciones Recientes
             </h3>
-            <p style="font-size: 14px; color: #555; margin-bottom: 10px">
-              <strong>Patrimonios, memorias e historias</strong> que tejen la
-              periferia urbana latinoamericana.
-            </p>
-            <p style="font-size: 14px; color: #555">
-              <strong>Urbanismo social en Medellín</strong> entre la garantía
-              de derechos y la complejidad territorial.
-            </p>
+            <ul style="list-style: none; padding: 0">
+              {recentPosts.map((post) => (
+                <li style="padding: 8px 0; border-bottom: 1px solid #ddd" key={post.slug}>
+                  <a href={`/post/${post.slug}`} style="color: #004200; text-decoration: none">
+                    {post.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

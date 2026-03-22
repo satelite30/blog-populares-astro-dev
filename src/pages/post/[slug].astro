@@ -11,7 +11,16 @@ export async function getStaticPaths() {
   }));
 }
 
-const { post } = Astro.props;
+export const prerender = false; // Renderiza bajo demanda, no estáticamente
+
+const { slug } = Astro.params;
+const post = getPostBySlug(slug);
+
+// Si no existe el post, redirige a inicio
+if (!post) {
+  return Astro.redirect('/');
+}
+
 const nextPost = getNextPost(post.id);
 const prevPost = getPrevPost(post.id);
 const recommendedPosts = getRecommendedPosts(post.id);
