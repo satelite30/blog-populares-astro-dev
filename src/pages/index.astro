@@ -141,60 +141,97 @@ const recentPosts = posts.slice().reverse().slice(0, 3); // Últimos 4 posts en 
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const cardsPerPage = 15;
-    const cards = Array.from(document.querySelectorAll('.post-card'));
-    const paginationEl = document.getElementById('paginationControls');
-    const totalPages = Math.max(1, Math.ceil(cards.length / cardsPerPage));
+    console.log('DOMContentLoaded fired');
 
-    let currentPage = 1;
+    const initPagination = () => {
+      const cards = Array.from(document.querySelectorAll('.post-card'));
+      console.log('Cards found:', cards.length);
+      if (cards.length === 0) {
+        console.log('No cards found, retrying...');
+        return; // Esperar a que se rendericen
+      }
 
-    function showPage(page) {
-      currentPage = Math.max(1, Math.min(page, totalPages));
-      const start = (currentPage - 1) * cardsPerPage;
-      const end = start + cardsPerPage;
+      const cardsPerPage = 10;
+      const paginationEl = document.getElementById('paginationControls');
+      const totalPages = Math.max(1, Math.ceil(cards.length / cardsPerPage));
+      console.log('Total pages:', totalPages);
 
-      cards.forEach((card, index) => {
-        card.classList.toggle('d-none-js', index < start || index >= end);
+      let currentPage = 1;
+
+      function showPage(page) {
+        console.log('Showing page:', page);
+        currentPage = Math.max(1, Math.min(page, totalPages));
+        const start = (currentPage - 1) * cardsPerPage;
+        const end = start + cardsPerPage;
+
+        cards.forEach((card, index) => {
+          card.classList.toggle('d-none-js', index < start || index >= end);
+        });
+
+        renderPagination();
+      }
+
+      function renderPagination() {
+        console.log('Rendering pagination for page:', currentPage);
+        paginationEl.innerHTML = '';
+
+        const prevLi = document.createElement('li');
+        prevLi.classList.add('page-item');
+        if (currentPage === 1) prevLi.classList.add('disabled');
+        prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Anterior" data-page="${currentPage - 1}">Anterior</a>`;
+        paginationEl.appendChild(prevLi);
+
+        for (let i = 1; i <= totalPages; i += 1) {
+          const li = document.createElement('li');
+          li.classList.add('page-item');
+          if (i === currentPage) li.classList.add('active');
+          li.innerHTML = `<a class="page-link" href="#" data-page="${i}">${i}</a>`;
+          paginationEl.appendChild(li);
+        }
+
+        const nextLi = document.createElement('li');
+        nextLi.classList.add('page-item');
+        if (currentPage === totalPages) nextLi.classList.add('disabled');
+        nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Siguiente" data-page="${currentPage + 1}">Siguiente</a>`;
+        paginationEl.appendChild(nextLi);
+      }
+
+      paginationEl.addEventListener('click', (event) => {
+        const target = event.target.closest('a[data-page]');
+        if (!target) return;
+        event.preventDefault();
+        const page = Number(target.getAttribute('data-page'));
+        console.log('Clicked page:', page);
+        if (!Number.isNaN(page)) {
+          showPage(page);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       });
 
-      renderPagination();
+      showPage(1);
+    };
+
+    // Usar MutationObserver para esperar a que se agreguen los elementos
+    const postsGrid = document.getElementById('postsGrid');
+    if (postsGrid) {
+      console.log('Setting up MutationObserver');
+      const observer = new MutationObserver((mutations) => {
+        console.log('Mutation detected');
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+            console.log('Child nodes added, initializing pagination');
+            initPagination();
+            observer.disconnect(); // Detener observación una vez inicializado
+          }
+        });
+      });
+      observer.observe(postsGrid, { childList: true });
     }
 
-    function renderPagination() {
-      paginationEl.innerHTML = '';
-
-      const prevLi = document.createElement('li');
-      prevLi.classList.add('page-item', currentPage === 1 ? 'disabled' : '');
-      prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Anterior" data-page="${currentPage - 1}">Anterior</a>`;
-      paginationEl.appendChild(prevLi);
-
-      const first = Math.max(1, currentPage - 2);
-      const last = Math.min(totalPages, currentPage + 2);
-
-      for (let i = first; i <= last; i += 1) {
-        const li = document.createElement('li');
-        li.classList.add('page-item', i === currentPage ? 'active' : '');
-        li.innerHTML = `<a class="page-link" href="#" data-page="${i}">${i}</a>`;
-        paginationEl.appendChild(li);
-      }
-
-      const nextLi = document.createElement('li');
-      nextLi.classList.add('page-item', currentPage === totalPages ? 'disabled' : '');
-      nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Siguiente" data-page="${currentPage + 1}">Siguiente</a>`;
-      paginationEl.appendChild(nextLi);
-    }
-
-    paginationEl.addEventListener('click', (event) => {
-      const target = event.target.closest('a[data-page]');
-      if (!target) return;
-      event.preventDefault();
-      const page = Number(target.getAttribute('data-page'));
-      if (!Number.isNaN(page)) {
-        showPage(page);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-
-    showPage(1);
+    // Fallback: intentar inicializar después de un pequeño delay
+    setTimeout(() => {
+      console.log('Fallback timeout, initializing pagination');
+      initPagination();
+    }, 100);
   });
 </script>
