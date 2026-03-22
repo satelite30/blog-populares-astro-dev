@@ -127,8 +127,7 @@ export const posts: Post[] = [
   quoteAuthor: 'Autor de la cita',
   conclusion: 'Conclusión final.'
 }
-  
-  
+
 
 ];
 
