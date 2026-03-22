@@ -307,8 +307,106 @@ export const posts: Post[] = [
   quote: 'Mostrar nuestras historias es recuperar nuestro espacio.',
   quoteAuthor: 'Cineasta comunitario',
   conclusion: 'El cine participativo impulsa el reconocimiento y la gobernanza cultural del barrio.'
+},
+
+{
+  id: 17,
+  slug: 'cine-comunitario-de-barrio',
+  title: 'Cine Comunitario de Barrio',
+  subtitle: 'Programación audiovisual con enfoque territorial',
+  image: 'https://via.placeholder.com/400x250?text=Cine+17',
+  date: '1 de abril de 2026',
+  author: 'Cine en la Esquina',
+  category: 'Participación Comunitaria',
+  readTime: '5 min',
+  tags: ['Cine', 'Comunidad', 'Narrativas'],
+  introduction: 'Proyección de películas y cortos que narran vidas y luchas locales.',
+  contextTitle: 'Festival barrial',
+  context: 'Participación de jóvenes creadores, debates y talleres alrededor de la creación audiovisual.',
+  quote: 'Mostrar nuestras historias es recuperar nuestro espacio.',
+  quoteAuthor: 'Cineasta comunitario',
+  conclusion: 'El cine participativo impulsa el reconocimiento y la gobernanza cultural del barrio.'
+},
+
+{
+  id: 18,
+  slug: 'cine-comunitario-de-barrio',
+  title: 'Cine Comunitario de Barrio',
+  subtitle: 'Programación audiovisual con enfoque territorial',
+  image: 'https://via.placeholder.com/400x250?text=Cine+18',
+  date: '1 de abril de 2026',
+  author: 'Cine en la Esquina',
+  category: 'Participación Comunitaria',
+  readTime: '5 min',
+  tags: ['Cine', 'Comunidad', 'Narrativas'],
+  introduction: 'Proyección de películas y cortos que narran vidas y luchas locales.',
+  contextTitle: 'Festival barrial',
+  context: 'Participación de jóvenes creadores, debates y talleres alrededor de la creación audiovisual.',
+  quote: 'Mostrar nuestras historias es recuperar nuestro espacio.',
+  quoteAuthor: 'Cineasta comunitario',
+  conclusion: 'El cine participativo impulsa el reconocimiento y la gobernanza cultural del barrio.'
+},
+
+{
+  id: 19,
+  slug: 'cine-comunitario-de-barrio',
+  title: 'Cine Comunitario de Barrio',
+  subtitle: 'Programación audiovisual con enfoque territorial',
+  image: 'https://via.placeholder.com/400x250?text=Cine+19',
+  date: '1 de abril de 2026',
+  author: 'Cine en la Esquina',
+  category: 'Participación Comunitaria',
+  readTime: '5 min',
+  tags: ['Cine', 'Comunidad', 'Narrativas'],
+  introduction: 'Proyección de películas y cortos que narran vidas y luchas locales.',
+  contextTitle: 'Festival barrial',
+  context: 'Participación de jóvenes creadores, debates y talleres alrededor de la creación audiovisual.',
+  quote: 'Mostrar nuestras historias es recuperar nuestro espacio.',
+  quoteAuthor: 'Cineasta comunitario',
+  conclusion: 'El cine participativo impulsa el reconocimiento y la gobernanza cultural del barrio.'
+},
+
+{
+  id: 20,
+  slug: 'cine-comunitario-de-barrio',
+  title: 'Cine Comunitario de Barrio',
+  subtitle: 'Programación audiovisual con enfoque territorial',
+  image: 'https://via.placeholder.com/400x250?text=Cine+20',
+  date: '1 de abril de 2026',
+  author: 'Cine en la Esquina',
+  category: 'Participación Comunitaria',
+  readTime: '5 min',
+  tags: ['Cine', 'Comunidad', 'Narrativas'],
+  introduction: 'Proyección de películas y cortos que narran vidas y luchas locales.',
+  contextTitle: 'Festival barrial',
+  context: 'Participación de jóvenes creadores, debates y talleres alrededor de la creación audiovisual.',
+  quote: 'Mostrar nuestras historias es recuperar nuestro espacio.',
+  quoteAuthor: 'Cineasta comunitario',
+  conclusion: 'El cine participativo impulsa el reconocimiento y la gobernanza cultural del barrio.'
+},
+
+{
+  id: 21,
+  slug: 'cine-comunitario-de-barrio',
+  title: 'Cine Comunitario de Barrio',
+  subtitle: 'Programación audiovisual con enfoque territorial',
+  image: 'https://via.placeholder.com/400x250?text=Cine+21',
+  date: '1 de abril de 2026',
+  author: 'Cine en la Esquina',
+  category: 'Participación Comunitaria',
+  readTime: '5 min',
+  tags: ['Cine', 'Comunidad', 'Narrativas'],
+  introduction: 'Proyección de películas y cortos que narran vidas y luchas locales.',
+  contextTitle: 'Festival barrial',
+  context: 'Participación de jóvenes creadores, debates y talleres alrededor de la creación audiovisual.',
+  quote: 'Mostrar nuestras historias es recuperar nuestro espacio.',
+  quoteAuthor: 'Cineasta comunitario',
+  conclusion: 'El cine participativo impulsa el reconocimiento y la gobernanza cultural del barrio.'
 }
+
 ];
+
+
 
 export function getPostBySlug(slug: string): Post | undefined {
   return posts.find(post => post.slug === slug);
