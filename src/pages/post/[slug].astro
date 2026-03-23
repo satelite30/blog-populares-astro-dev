@@ -32,7 +32,13 @@ const prevPost = getPrevPost(post.id);
 const recommendedPosts = getRecommendedPosts(post.id);
 ---
 
-<BaseLayout title={`${post.title} - Huellas de Barrio`}>
+<!-- <BaseLayout title={`${post.title} - Huellas de Barrio`}> -->
+ <BaseLayout
+  title={`${post.title} - Huellas de Barrio`}
+  description={post.introduction}
+  image={`https://popular-esmedellin.com${post.image}`}
+  url={`https://popular-esmedellin.com/post/${post.slug}`}
+/>
   <Header currentPage="post" />
 
   <main>
