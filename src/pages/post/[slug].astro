@@ -53,7 +53,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
         justify-content: center;
       "
     >
-      <div class="container">
+      <div class="container ">
         <div class="row w-100">
           <div class="col-2 d-flex align-items-center justify-content-center">
             <a href={`/post/${prevPost.slug}`} class="text-decoration-none">
@@ -79,8 +79,10 @@ const recommendedPosts = getRecommendedPosts(post.id);
       </div>
     </div>
 
+<div class="container-fluid  bg-dark-subtle">
+
     <!-- Post -->
-    <div class="container py-5">
+    <div class="container py-5 ">
       <div class="col-lg-12 ">
         {
           post.images && post.images.length > 0 ? (
@@ -88,16 +90,17 @@ const recommendedPosts = getRecommendedPosts(post.id);
               <img
                 src={imgSrc}
                 alt={`Imagen ${index + 1} del post`}
-                class="img-fluid rounded shadow-sm mb-4 mx-1"
+                class="w-100 mb-4"
                 key={index}
-                style="object-fit: cover;"
+                style="height: 350px;top:100px ; object-fit: cover;"
               />
             ))
           ) : (
             <img
               src={post.image}
               alt="Imagen del post"
-              class="img-fluid rounded shadow-sm mb-4 border border-danger"
+              class="w-100 mb-4"
+              style="height: 150px; object-fit: cover;"
             />
           )
         }
@@ -197,6 +200,8 @@ const recommendedPosts = getRecommendedPosts(post.id);
         </div>
       </div>
     </div>
+</div>
+
   </main>
 
   <Footer />
