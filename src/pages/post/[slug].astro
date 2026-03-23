@@ -128,6 +128,86 @@ const recommendedPosts = getRecommendedPosts(post.id);
               {post.context}
             </p>
 
+<!--  --------------contenido multimedia  -->
+            {post.videoYoutube && post.videoYoutube.length > 0 && (
+              <div class="mt-5">
+                <h5 class="text-success mb-3">Videos</h5>
+                <div class="row g-3">
+                  {post.videoYoutube.map((videoUrl, index) => (
+                    <div class="col-md-6 mb-3" key={index}>
+                      <iframe
+                        width="100%"
+                        height="315"
+                        src={videoUrl.replace('youtu.be/', 'youtube.com/embed/').replace('watch?v=', 'embed/')}
+                        title={`Video ${index + 1}`}
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        style="border-radius: 8px;"
+                      ></iframe>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {post.videoLocal && post.videoLocal.length > 0 && (
+              <div class="mt-5">
+                <h5 class="text-success mb-3">Videos Locales</h5>
+                <div class="row g-3">
+                  {post.videoLocal.map((videoPath, index) => (
+                    <div class="col-md-6 mb-3" key={index}>
+                      <video
+                        width="100%"
+                        height="315"
+                        controls
+                        style="border-radius: 8px; background-color: #000;"
+                      >
+                        <source src={videoPath} type="video/mp4" />
+                        Tu navegador no soporta el elemento video.
+                      </video>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {post.imagenContenido && post.imagenContenido.length > 0 && (
+              <div class="mt-5">
+                <h5 class="text-success mb-3">Galería de Contenido</h5>
+                <div class="row g-3">
+                  {post.imagenContenido.map((imagenUrl, index) => (
+                    <div class="col-md-6 mb-3" key={index}>
+                      <img
+                        src={imagenUrl}
+                        alt={`Imagen de contenido ${index + 1}`}
+                        style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {post.audioContenido && post.audioContenido.length > 0 && (
+              <div class="mt-5">
+                <h5 class="text-success mb-3">Contenido de Audio</h5>
+                <div class="row g-3">
+                  {post.audioContenido.map((audioPath, index) => (
+                    <div class="col-md-12 mb-3" key={index}>
+                      <audio
+                        controls
+                        style="width: 100%; display: block; margin-bottom: 15px;"
+                      >
+                        <source src={audioPath} type="audio/mpeg" />
+                        Tu navegador no soporta el elemento audio.
+                      </audio>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <blockquote
               class="blockquote ps-3 border-start border-3 border-success"
             >
