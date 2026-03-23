@@ -268,17 +268,53 @@ const recentPosts = posts.slice().reverse().slice(0, 3); // Últimos 4 posts en 
     history[key].posts.push(post);
   });
 
-  // Generar HTML para el historial
+  // Ordenar posts dentro de cada mes por fecha
+  Object.keys(history).forEach(key => {
+    history[key].posts.sort((a, b) => {
+      const [dayA, monthA, yearA] = a.publish.split('-').map(Number);
+      const [dayB, monthB, yearB] = b.publish.split('-').map(Number);
+      const dateA = new Date(yearA, monthA - 1, dayA);
+      const dateB = new Date(yearB, monthB - 1, dayB);
+      return dateA - dateB; // Más antiguos primero
+    });
+  });
+
+  // Generar HTML para el historial usando Bootstrap accordion
   const historialEl = document.getElementById('historial');
   if (historialEl) {
     const sortedKeys = Object.keys(history).sort().reverse(); // Más recientes primero
-    historialEl.innerHTML = sortedKeys.map(key => {
-      const { month, count } = history[key];
-      return `<li style="padding: 8px 0; border-bottom: 1px solid #ddd;">
-        <a href="#" style="color: #004200; text-decoration: none;">
-          ${month} (${count} publicaciones)
-        </a>
-      </li>`;
-    }).join('');
+    const accordionId = 'historyAccordion';
+    historialEl.innerHTML = `
+      <div class="accordion" id="${accordionId}">
+        ${sortedKeys.map((key, index) => {
+          const { month, count, posts } = history[key];
+          const collapseId = `collapse${index}`;
+          const headingId = `heading${index}`;
+          const postsHtml = posts.map(post => {
+            return `<li style="padding: 4px 0; border-bottom: 1px solid #eee;">
+              <a href="/post/${post.slug}" style="color: #004200; text-decoration: none; font-size: 14px;">
+                ${post.publish} - ${post.title}
+              </a>
+            </li>`;
+          }).join('');
+          return `
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="${headingId}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}" style="background-color: #f8f6f2; color: #004200; border: none;">
+                  ${month} (${count} publicaciones)
+                </button>
+              </h2>
+              <div id="${collapseId}" class="accordion-collapse collapse" aria-labelledby="${headingId}" data-bs-parent="#${accordionId}">
+                <div class="accordion-body" style="padding: 10px;">
+                  <ul style="list-style: none; padding: 0; margin: 0;">
+                    ${postsHtml}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
   }
 </script>
