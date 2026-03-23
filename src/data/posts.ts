@@ -57,6 +57,7 @@ export const posts: Post[] = [
     quoteAuthor: '',
     conclusionTitle: 'Conclusión',
     conclusionContent: []
+    
   },
   {
     id: 2,

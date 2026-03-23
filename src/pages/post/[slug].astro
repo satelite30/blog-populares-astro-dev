@@ -157,7 +157,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
 
             {post.videoLocal && post.videoLocal.length > 0 && (
               <div class="mt-5">
-                <h5 class="text-success mb-3">Videos Locales</h5>
+                <h5 class="text-success mb-3">Conoce</h5>
                 <div class="row g-3">
                   {post.videoLocal.map((videoPath, index) => (
                     <div class="col-md-6 mb-3" key={index}>
@@ -165,7 +165,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
                         width="100%"
                         height="315"
                         controls
-                        style="border-radius: 8px; background-color: #000;"
+                        style="border-radius: 2px; background-color: #000;"
                       >
                         <source src={videoPath} type="video/mp4" />
                         Tu navegador no soporta el elemento video.
@@ -240,7 +240,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
         </div>
 
   <!------------------- Columna derecha: meta info -->
-        <aside class="col-lg-4">
+        <aside class="col-lg-4 ">
           <div class="bg-white p-4 rounded shadow-sm mb-4">
             <h5 class="text-success mb-3">Detalles</h5>
             <ul class="list-unstyled mb-0">
