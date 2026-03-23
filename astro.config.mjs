@@ -2,8 +2,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://TU-USUARIO.github.io',
-  base: '/NOMBRE-DEL-REPO',
+  site: 'https://satelite30.github.io/',
+  base: 'blog-populares-astro-dev',
   output: 'static',
   adapter: github(),
 });
