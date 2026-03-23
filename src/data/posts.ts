@@ -83,8 +83,8 @@ export const posts: Post[] = [
       'https://raw.githubusercontent.com/satelite30/blog-Popular-es/refs/heads/main/imagenesBase/Lanzamiento%20LibroUniversidad%20FederaldeRiodeJaneiro%202026-01-28.jpeg'
 
     ],
-    date: '20 de Marzo de 2026',
-    publish: '20-03-2026',
+    date: '2 de Marzo de 2026',
+    publish: '02-03-2026',
     author: 'Grupo MASO',
     category: 'Transformaciones urbanas, Barrios populares, Turismo comunitario, Patrimonio popular, Turistificación, Mercantilización urbana',
     readTime: '4 min',
