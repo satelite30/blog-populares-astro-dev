@@ -19,6 +19,9 @@ export interface Post {
   videoLocal: string[];
   imagenContenido: string[];
   audioContenido: string[];
+  socialLinkFace: string[];
+  socialLinkInsta: string[];
+  socialLinkX: string[];
   quote: string;
   quoteAuthor: string;
   conclusionTitle: string;
@@ -53,11 +56,14 @@ export const posts: Post[] = [
     videoLocal: [],
     imagenContenido: [],
     audioContenido: [],
+    socialLinkFace: [],
+    socialLinkInsta: [],
+    socialLinkX: [],
     quote: '',
     quoteAuthor: '',
     conclusionTitle: 'Conclusión',
     conclusionContent: []
-    
+
   },
   {
     id: 2,
@@ -83,10 +89,13 @@ export const posts: Post[] = [
     contextContent: [
       'A través de talleres y recorridos, recopilamos relatos que conectan el pasado del barrio con su presente, revelando cómo la memoria colectiva influye en la identidad territorial.'
     ],
-    videoYoutube: ['https://youtu.be/I2I6oAoDE4o'],
+    videoYoutube: [],
     videoLocal: [],
     imagenContenido: [],
     audioContenido: [],
+    socialLinkFace: [],
+    socialLinkInsta: [],
+    socialLinkX: [],
     quote: '',
     quoteAuthor: 'Grupo MASO',
     conclusionTitle: 'Conclusión',
