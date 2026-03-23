@@ -31,7 +31,7 @@ export interface Post {
   conclusionContent: string[];
 }
 
-export const posts: Post[] = [
+const rawPosts: Post[] = [
   {
     id: 1,
     slug: 'Laboratorio CompartirES PopularES',
@@ -162,7 +162,8 @@ export const posts: Post[] = [
 
 
 export function getPostBySlug(slug: string): Post | undefined {
-  return posts.find(post => post.slug === slug);
+  const normalizedSlug = slugify(decodeURIComponent(slug || ''));
+  return posts.find((post) => slugify(post.slug) === normalizedSlug);
 }
 
 export function getPostById(id: number): Post | undefined {
@@ -184,6 +185,12 @@ export function getPrevPost(currentId: number): Post {
 export function getRecommendedPosts(currentId: number): Post[] {
   return posts.filter(post => post.id !== currentId);
 }
+
+// Normalizar slugs de posts para uso en servidor (SSR)
+export const posts: Post[] = rawPosts.map((post) => ({
+  ...post,
+  slug: slugify(post.slug || post.title),
+}));
 
 // Función para generar slug automáticamente a partir del título
 export function slugify(text: string): string {

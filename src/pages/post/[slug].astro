@@ -10,16 +10,13 @@ import {
   getRecommendedPosts,
 } from "../../data/posts";
 
-export async function getStaticPaths() {
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
-}
+
+
 
 export const prerender = false; // Renderiza bajo demanda, no estáticamente
+export const ssr = true; // Asegura renderizado en servidor
 
-const { slug } = Astro.params;
+const slug = Astro.params.slug ?? "";
 const post = getPostBySlug(slug);
 
 // Si no existe el post, redirige a inicio
