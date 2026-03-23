@@ -35,7 +35,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
 <!-- <BaseLayout title={`${post.title} - Huellas de Barrio`}> -->
 <BaseLayout
   title={`${post.title} - Huellas de Barrio`}
-  description={post.introduction}
+  description={post.introductionTitle}
   image={`https://popular-esmedellin.com${post.image}`}
   url={`https://popular-esmedellin.com/post/${post.slug}`}
 />
@@ -120,7 +120,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
             <h3 class="text-success mb-3">{post.introductionTitle}</h3>
             {
               post.introductionContent.map((paragraph, index) => (
-                <p key={index} class="fs-5" style="color: #333">
+                <p key={index} class="fs-5" style="color: #333; text-align: justify;" >
                   {paragraph}
                 </p>
               ))
@@ -129,7 +129,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
             <h4 class="text-success mt-4">{post.contextTitle}</h4>
             {
               post.contextContent.map((paragraph, index) => (
-                <p key={index} style="color: #555">
+                <p key={index} style="color: #555; text-align: justify;">
                   {paragraph}
                 </p>
               ))
@@ -188,7 +188,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
             {
               post.imagenContenido && post.imagenContenido.length > 0 && (
                 <div class="mt-5">
-                  <h5 class="text-success mb-3">Galería de Contenido</h5>
+                  <h5 class="text-success mb-3"></h5>
                   <div class="row g-3">
                     {post.imagenContenido.map((imagenUrl, index) => (
                       <div class="col-md-6 mb-3" key={index}>
@@ -224,6 +224,20 @@ const recommendedPosts = getRecommendedPosts(post.id);
                 </div>
               )
             }
+
+<!---------------------------------- segunda parte de texto -->
+           {
+              post.textoSecundario.map((paragraph, index) => (
+                <p key={index} class="fs-6" style="color: #333; text-align: justify;" >
+                  {paragraph}
+                </p>
+              ))
+            } 
+
+
+
+
+
 
             <!--    link externos y recomendados -->
             {post.linkDocumento && post.linkDocumento.length > 0 && post.nombreBoton && post.nombreBoton.length > 0 && (
@@ -374,7 +388,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
             <ul class="list-unstyled mb-0">
               <li class="mb-2"><strong>Fecha:</strong> {post.date}</li>
               <li class="mb-2"><strong>Autor:</strong> {post.author}</li>
-              <li class="mb-2"><strong>Categoría:</strong> {post.category}</li>
+              <li class="mb-2"><strong>Categoría:</strong> {post.category}.</li>
               <li><strong>Lectura:</strong> {post.readTime}</li>
             </ul>
           </div>
