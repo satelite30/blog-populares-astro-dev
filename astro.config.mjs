@@ -5,7 +5,7 @@ export default defineConfig({
   site: 'https://satelite30.github.io/',
   base: 'blog-populares-astro-dev',
   output: 'static',
-  adapter: github(),
+  
 });
 
 // https://astro.build/config
