@@ -118,15 +118,19 @@ const recommendedPosts = getRecommendedPosts(post.id);
               >
             </p>
 
-            <h3 class="text-success mb-3">Introducción</h3>
-            <p class="fs-5" style="color: #333">
-              {post.introduction}
-            </p>
+            <h3 class="text-success mb-3">{post.introductionTitle}</h3>
+            {post.introductionContent.map((paragraph, index) => (
+              <p key={index} class="fs-5" style="color: #333">
+                {paragraph}
+              </p>
+            ))}
 
             <h4 class="text-success mt-4">{post.contextTitle}</h4>
-            <p style="color: #555">
-              {post.context}
-            </p>
+            {post.contextContent.map((paragraph, index) => (
+              <p key={index} style="color: #555">
+                {paragraph}
+              </p>
+            ))}
 
 <!--  --------------contenido multimedia  -->
             {post.videoYoutube && post.videoYoutube.length > 0 && (
@@ -208,23 +212,34 @@ const recommendedPosts = getRecommendedPosts(post.id);
               </div>
             )}
 
-            <blockquote
-              class="blockquote ps-3 border-start border-3 border-success"
-            >
-              <p class="mb-0">
-                "{post.quote}"
-              </p>
-              <footer class="blockquote-footer mt-2" style="background-color: #004e2a8a;color:white;">{post.quoteAuthor}</footer>
-            </blockquote>
 
-            <h4 class="text-success mt-4">Conclusión</h4>
-            <p style="color: #555">
-              {post.conclusion}
-            </p>
+
+<!-- post BLOCKQUOTE Y CONCLUSION -->
+            {post.quote && post.quote.trim() !== '' && (
+              <blockquote
+                class="blockquote ps-3 border-start border-3 border-success"
+              >
+                <p class="mb-0">
+                  "{post.quote}"
+                </p>
+                <footer class="blockquote-footer mt-2" style="background-color: #004e2a8a;color:white;">{post.quoteAuthor}</footer>
+              </blockquote>
+            )}
+
+            {post.conclusionContent && post.conclusionContent.length > 0 && (
+              <>
+                <h4 class="text-success mt-4">{post.conclusionTitle}</h4>
+                {post.conclusionContent.map((paragraph, index) => (
+                  <p key={index} style="color: #555">
+                    {paragraph}
+                  </p>
+                ))}
+              </>
+            )}
           </article>
         </div>
 
-        <!-- Columna derecha: meta info -->
+  <!------------------- Columna derecha: meta info -->
         <aside class="col-lg-4">
           <div class="bg-white p-4 rounded shadow-sm mb-4">
             <h5 class="text-success mb-3">Detalles</h5>

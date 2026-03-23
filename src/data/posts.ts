@@ -11,16 +11,18 @@ export interface Post {
   category: string;
   readTime: string;
   tags: string[];
-  introduction: string;
+  introductionTitle: string;
+  introductionContent: string[];
   contextTitle: string;
+  contextContent: string[];
   videoYoutube: string[];
   videoLocal: string[];
   imagenContenido: string[];
   audioContenido: string[];
-  context: string;
   quote: string;
   quoteAuthor: string;
-  conclusion: string;
+  conclusionTitle: string;
+  conclusionContent: string[];
 }
 
 export const posts: Post[] = [
@@ -39,16 +41,22 @@ export const posts: Post[] = [
     category: 'Investigación',
     readTime: '4 min',
     tags: ['Memoria', 'Participación', 'Territorio', 'Urbanismo'],
-    introduction: 'En este artículo exploramos cómo las prácticas de memoria urbana se entrelazan con estrategias de participación comunitaria en barrios populares, y cómo esas dinámicas construyen nuevos sentidos de territorio.',
+    introductionTitle: 'Introducción',
+    introductionContent: [
+      'En este artículo exploramos cómo las prácticas de memoria urbana se entrelazan con estrategias de participación comunitaria en barrios populares, y cómo esas dinámicas construyen nuevos sentidos de territorio.'
+    ],
     contextTitle: 'Contexto y enfoque',
+    contextContent: [
+      'A partir de recorridos, entrevistas y talleres participativos, recogemos relatos de habitantes que asumen sus territorios como espacios de resistencia y esperanza. Este enfoque busca visibilizar voces que son invisibilizadas por procesos de urbanización y mercantilización del espacio.'
+    ],
     videoYoutube: [],
     videoLocal: [],
     imagenContenido: [],
     audioContenido: [],
-    context: 'A partir de recorridos, entrevistas y talleres participativos, recogemos relatos de habitantes que asumen sus territorios como espacios de resistencia y esperanza. Este enfoque busca visibilizar voces que son invisibilizadas por procesos de urbanización y mercantilización del espacio.',
     quote: '',
     quoteAuthor: '',
-    conclusion: ''
+    conclusionTitle: 'Conclusión',
+    conclusionContent: []
   },
   {
     id: 2,
@@ -66,16 +74,24 @@ export const posts: Post[] = [
     category: 'Participación Comunitaria',
     readTime: '4 min',
     tags: ['Memoria', 'Participación', 'Santo Domingo Savio', 'Espacialización'],
-    introduction: 'Este proyecto explora la memoria urbana del barrio Santo Domingo Savio en Medellín, utilizando metodologías participativas para mapear y narrar las experiencias de sus habitantes.',
+    introductionTitle: 'Introducción',
+    introductionContent: [
+      'Este proyecto explora la memoria urbana del barrio Santo Domingo Savio en Medellín, utilizando metodologías participativas para mapear y narrar las experiencias de sus habitantes.'
+    ],
     contextTitle: 'Contexto y enfoque',
-    videoYoutube: [],
+    contextContent: [
+      'A través de talleres y recorridos, recopilamos relatos que conectan el pasado del barrio con su presente, revelando cómo la memoria colectiva influye en la identidad territorial.'
+    ],
+    videoYoutube: ['https://youtu.be/I2I6oAoDE4o'],
     videoLocal: [],
     imagenContenido: [],
     audioContenido: [],
-    context: 'A través de talleres y recorridos, recopilamos relatos que conectan el pasado del barrio con su presente, revelando cómo la memoria colectiva influye en la identidad territorial.',
-    quote: 'Sentipensar es habitar el territorio con el corazón y la mente.',
+    quote: '',
     quoteAuthor: 'Grupo MASO',
-    conclusion: 'La espacialización de la memoria urbana permite re-significar espacios urbanos, fortaleciendo el sentido de pertenencia y la resiliencia comunitaria.'
+    conclusionTitle: 'Conclusión',
+    conclusionContent: [
+      'La espacialización de la memoria urbana permite re-significar espacios urbanos, fortaleciendo el sentido de pertenencia y la resiliencia comunitaria.'
+    ]
   }
    
 

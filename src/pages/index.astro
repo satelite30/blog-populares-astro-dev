@@ -55,7 +55,7 @@ const recentPosts = posts.slice().reverse().slice(0, 3); // Últimos 4 posts en 
                   readTime={post.readTime}
                   category={post.category}
                   tags={post.tags}
-                  excerpt={post.introduction.substring(0, 150) + '...'}
+                  excerpt={post.introductionTitle.substring(0, 150) + '...'}
                   image={post.image}
                   slug={post.slug}
                 />
