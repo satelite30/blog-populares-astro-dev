@@ -381,10 +381,11 @@ const recommendedPosts = getRecommendedPosts(post.id);
 
           <div class="bg-white p-4 rounded shadow-sm mb-4">
             <h5 class="text-success mb-3">Etiquetas</h5>
-            <div class="d-flex flex-wrap gap-2">
+            <div class="d-flex flex-wrap gap-2 ">
               {
                 post.tags.map((tag) => (
-                  <span class="badge bg-success">{tag}</span>
+                  <a href="../index.html">
+                 <span class="badge bg-success ">{tag}</span></a>
                 ))
               }
             </div>
