@@ -82,6 +82,19 @@ const recentPosts = posts.slice().reverse().slice(0, 3); // Últimos 4 posts en 
               box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             "
           >
+            <h3 style="color: #004200; margin-bottom: 15px">Historial</h3>
+            <div id="historial" style="list-style: none; padding: 0"></div>
+          </div>
+
+          <div
+            style="
+              background: #f8f6f2;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              margin-top: 20px;
+            "
+          >
             <h3 style="color: #004200; margin-bottom: 15px">Categorías</h3>
             <ul style="list-style: none; padding: 0">
               {categories.map((category) => (
@@ -170,7 +183,7 @@ const recentPosts = posts.slice().reverse().slice(0, 3); // Últimos 4 posts en 
 
         renderPagination();
       }
-      
+
       function renderPagination() {
         console.log('Rendering pagination for page:', currentPage);
         paginationEl.innerHTML = '';
@@ -234,4 +247,38 @@ const recentPosts = posts.slice().reverse().slice(0, 3); // Últimos 4 posts en 
       initPagination();
     }, 100);
   });
+
+
+
+
+</script>
+
+<script define:vars={{ posts }}>
+  // Agrupar posts por mes y año usando el campo 'publish' en formato DD-MM-YYYY
+  const history = {};
+  posts.forEach(post => {
+    const [day, month, year] = post.publish.split('-').map(Number);
+    const date = new Date(year, month - 1, day); // Meses en JS son 0-indexed
+    const key = `${year}-${String(month).padStart(2, '0')}`;
+    const monthName = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long' });
+    if (!history[key]) {
+      history[key] = { month: monthName, count: 0, posts: [] };
+    }
+    history[key].count += 1;
+    history[key].posts.push(post);
+  });
+
+  // Generar HTML para el historial
+  const historialEl = document.getElementById('historial');
+  if (historialEl) {
+    const sortedKeys = Object.keys(history).sort().reverse(); // Más recientes primero
+    historialEl.innerHTML = sortedKeys.map(key => {
+      const { month, count } = history[key];
+      return `<li style="padding: 8px 0; border-bottom: 1px solid #ddd;">
+        <a href="#" style="color: #004200; text-decoration: none;">
+          ${month} (${count} publicaciones)
+        </a>
+      </li>`;
+    }).join('');
+  }
 </script>
