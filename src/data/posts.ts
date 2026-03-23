@@ -22,6 +22,8 @@ export interface Post {
   socialLinkFace: string[];
   socialLinkInsta: string[];
   socialLinkX: string[];
+  linkDocumento: string[];
+  nombreBoton: string[];
   quote: string;
   quoteAuthor: string;
   conclusionTitle: string;
@@ -59,6 +61,8 @@ export const posts: Post[] = [
     socialLinkFace: [],
     socialLinkInsta: [],
     socialLinkX: [],
+    linkDocumento: [],
+    nombreBoton: [],
     quote: '',
     quoteAuthor: '',
     conclusionTitle: 'Conclusión',
@@ -96,6 +100,8 @@ export const posts: Post[] = [
     socialLinkFace: [],
     socialLinkInsta: [],
     socialLinkX: [],
+    linkDocumento: ['https://popular-esmedellin.com/pages/publicaciones.html'],
+    nombreBoton: ['Conoce más'],
     quote: '',
     quoteAuthor: 'Grupo MASO',
     conclusionTitle: 'Conclusión',
