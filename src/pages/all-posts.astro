@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { posts } from '../data/posts';
+---
+
+<BaseLayout title="Todos los Posts - Huellas de Barrio">
+  <Header currentPage="actualidades" />
+
+  <main>
+    <div class="container-fluid" style="background: linear-gradient(135deg, #004200 0%, #006600 100%); min-height: 100px; display: flex; align-items: center; justify-content: center;">
+      <h2 class="text-white m-0">Todos los posts (modelo completo)</h2>
+    </div>
+
+    <div class="container py-5 border border-info ">
+      {posts.map((post) => (
+        <article key={post.slug} class="mb-5 p-4 border rounded shadow-sm">
+          <h2 class="text-success">{post.title}</h2>
+          <p class="text-muted">{post.date} · {post.author} · {post.category} · {post.readTime}</p>
+          <p>{post.subtitle}</p>
+
+          <div class="row gy-3 mb-4">
+            {post.images && post.images.length > 0 ? (
+              post.images.map((img, idx) => (
+                <div class="col-md-4" key={idx}>
+                  <img src={img} alt={`Imagen ${idx + 1} de ${post.title}`} class="w-100" style="height: 150px; object-fit: cover; border-radius: 0.5rem;" />
+                </div>
+              ))
+            ) : (
+              <div class="col-12">
+                <img src={post.image} alt={`Imagen de ${post.title}`} class="w-100" style="height: 150px; object-fit: cover; border-radius: 0.5rem;" />
+              </div>
+            )}
+          </div>
+
+          <section class="mb-3">
+            <h3>Introducción</h3>
+            <p>{post.introduction}</p>
+          </section>
+
+          <section class="mb-3">
+            <h3>{post.contextTitle}</h3>
+            <p>{post.context}</p>
+          </section>
+
+          <section class="mb-3">
+            <h3>Conclusión</h3>
+            <p>{post.conclusion}</p>
+          </section>
+
+          <blockquote class="blockquote border-start border-3 border-success ps-3">
+            <p class="mb-0">"{post.quote}"</p>
+            <footer class="blockquote-footer">{post.quoteAuthor}</footer>
+          </blockquote>
+
+          <div class="mt-3">
+            {post.tags.map((tag) => (
+              <span class="badge bg-success me-1" key={tag}>{tag}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+
+      
+    </div>
+
+   
+
+
+  </main>
+
+  <Footer />
+</BaseLayout>
