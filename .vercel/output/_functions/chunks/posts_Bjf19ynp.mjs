@@ -1,8 +1,8 @@
-import { c as createComponent } from './astro-component_Bh2eELSp.mjs';
+import { c as createComponent } from './astro-component_BzRi4QGI.mjs';
 import 'piccolore';
-import { l as renderComponent, r as renderTemplate, m as maybeRenderHead, h as addAttribute } from './entrypoint_Dl6C-U4i.mjs';
-import { $ as $$BaseLayout, a as $$Header, b as $$Footer, p as posts } from './posts_DcRzxdZB.mjs';
-import { $ as $$BlogCard } from './BlogCard_DQJL0rjf.mjs';
+import { l as renderComponent, r as renderTemplate, m as maybeRenderHead, h as addAttribute } from './entrypoint_DONAXCHP.mjs';
+import { $ as $$BaseLayout, a as $$Header, b as $$Footer, p as posts } from './posts_uGuo7EcJ.mjs';
+import { $ as $$BlogCard } from './BlogCard_Cy8XOGDS.mjs';
 
 const $$Posts = createComponent(($$result, $$props, $$slots) => {
   const firstTenPosts = posts.slice(0, 10);

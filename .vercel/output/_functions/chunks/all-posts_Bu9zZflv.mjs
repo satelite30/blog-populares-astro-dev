@@ -1,7 +1,7 @@
-import { c as createComponent } from './astro-component_Bh2eELSp.mjs';
+import { c as createComponent } from './astro-component_BzRi4QGI.mjs';
 import 'piccolore';
-import { l as renderComponent, r as renderTemplate, m as maybeRenderHead, h as addAttribute } from './entrypoint_Dl6C-U4i.mjs';
-import { $ as $$BaseLayout, a as $$Header, p as posts, b as $$Footer } from './posts_DcRzxdZB.mjs';
+import { l as renderComponent, r as renderTemplate, m as maybeRenderHead, h as addAttribute } from './entrypoint_DONAXCHP.mjs';
+import { $ as $$BaseLayout, a as $$Header, p as posts, b as $$Footer } from './posts_uGuo7EcJ.mjs';
 
 const $$AllPosts = createComponent(($$result, $$props, $$slots) => {
   const categories = [

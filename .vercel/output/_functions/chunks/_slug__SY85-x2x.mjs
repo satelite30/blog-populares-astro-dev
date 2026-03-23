@@ -1,8 +1,8 @@
-import { c as createComponent } from './astro-component_Bh2eELSp.mjs';
+import { c as createComponent } from './astro-component_BzRi4QGI.mjs';
 import 'piccolore';
-import { l as renderComponent, m as maybeRenderHead, h as addAttribute, r as renderTemplate, n as Fragment } from './entrypoint_Dl6C-U4i.mjs';
-import { r as renderScript } from './script_-tz2Mhfr.mjs';
-import { p as posts, g as getPostBySlug, c as getNextPost, d as getPrevPost, e as getRecommendedPosts, $ as $$BaseLayout, a as $$Header, b as $$Footer } from './posts_DcRzxdZB.mjs';
+import { l as renderComponent, m as maybeRenderHead, h as addAttribute, r as renderTemplate, n as Fragment } from './entrypoint_DONAXCHP.mjs';
+import { r as renderScript } from './script_ifQVY_jV.mjs';
+import { p as posts, g as getPostBySlug, c as getNextPost, d as getPrevPost, e as getRecommendedPosts, $ as $$BaseLayout, a as $$Header, b as $$Footer } from './posts_uGuo7EcJ.mjs';
 
 async function getStaticPaths() {
   return posts.map((post) => ({
