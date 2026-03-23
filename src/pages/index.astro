@@ -260,7 +260,7 @@ const recentPosts = posts.slice().reverse().slice(0, 3); // Últimos 4 posts en 
     const [day, month, year] = post.publish.split('-').map(Number);
     const date = new Date(year, month - 1, day); // Meses en JS son 0-indexed
     const key = `${year}-${String(month).padStart(2, '0')}`;
-    const monthName = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long' });
+    const monthName = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long' }).replace(/^\w/, c => c.toUpperCase());
     if (!history[key]) {
       history[key] = { month: monthName, count: 0, posts: [] };
     }

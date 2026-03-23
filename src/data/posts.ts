@@ -29,7 +29,7 @@ export const posts: Post[] = [
     images: [
       'https://raw.githubusercontent.com/satelite30/blog-Popular-es/refs/heads/main/imagenesBase/mural3.jpeg'
     ],
-    date: '17 de marzo de 2026',
+    date: '17 de Marzo de 2026',
     publish: '17-03-2026',
     author: 'Grupo MASO',
     category: 'Investigación',
@@ -52,7 +52,7 @@ export const posts: Post[] = [
       'https://raw.githubusercontent.com/satelite30/blog-Popular-es/refs/heads/main/fotoMuralLaSierra.jpeg'
       
     ],
-    date: '20 de marzo de 2026',
+    date: '20 de Marzo de 2026',
     publish: '20-03-2026',
     author: 'Grupo MASO',
     category: 'Participación Comunitaria',
@@ -74,7 +74,7 @@ export const posts: Post[] = [
     images: [
       'https://raw.githubusercontent.com/satelite30/logo-test/refs/heads/main/corazon1.jpeg'
     ],
-    date: '19 de marzo de 2026',
+    date: '19 de Marzo de 2026',
     publish: '19-03-2026',
     author: 'Grupo MASO',
     category: 'Memoria Urbana',
