@@ -1,8 +1,14 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { posts, getPostBySlug, getNextPost, getPrevPost, getRecommendedPosts } from '../../data/posts';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import {
+  posts,
+  getPostBySlug,
+  getNextPost,
+  getPrevPost,
+  getRecommendedPosts,
+} from "../../data/posts";
 
 export async function getStaticPaths() {
   return posts.map((post) => ({
@@ -18,7 +24,7 @@ const post = getPostBySlug(slug);
 
 // Si no existe el post, redirige a inicio
 if (!post) {
-  return Astro.redirect('/');
+  return Astro.redirect("/");
 }
 
 const nextPost = getNextPost(post.id);
@@ -47,8 +53,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
             <a href={`/post/${prevPost.slug}`} class="text-decoration-none">
               <i
                 class="fas fa-chevron-left text-white nav-chevron"
-                style="font-size: 2rem; cursor: pointer"
-              ></i>
+                style="font-size: 2rem; cursor: pointer"></i>
             </a>
           </div>
           <div class="col-8 text-center text-white">
@@ -61,8 +66,7 @@ const recommendedPosts = getRecommendedPosts(post.id);
             <a href={`/post/${nextPost.slug}`} class="text-decoration-none">
               <i
                 class="fas fa-chevron-right text-white nav-chevron"
-                style="font-size: 2rem; cursor: pointer"
-              ></i>
+                style="font-size: 2rem; cursor: pointer"></i>
             </a>
           </div>
         </div>
@@ -71,12 +75,26 @@ const recommendedPosts = getRecommendedPosts(post.id);
 
     <!-- Post -->
     <div class="container py-5">
-      <div class="col-lg-12 border">
-        <img
-          src="/recursos/img/logo4.png"
-          alt="Imagen del post"
-          class="img-fluid rounded shadow-sm mb-4"
-        />
+      <div class="col-lg-12 ">
+        {
+          post.images && post.images.length > 0 ? (
+            post.images.map((imgSrc, index) => (
+              <img
+                src={imgSrc}
+                alt={`Imagen ${index + 1} del post`}
+                class="img-fluid rounded shadow-sm mb-4 mx-1"
+                key={index}
+                style="object-fit: cover;"
+              />
+            ))
+          ) : (
+            <img
+              src={post.image}
+              alt="Imagen del post"
+              class="img-fluid rounded shadow-sm mb-4 border border-danger"
+            />
+          )
+        }
       </div>
 
       <div class="row gy-4">
@@ -86,7 +104,8 @@ const recommendedPosts = getRecommendedPosts(post.id);
             <p class="text-muted mb-4">
               <small
                 >Publicado el <strong>{post.date}</strong> ·
-                <strong>Autor:</strong> {post.author}</small
+                <strong>Autor:</strong>
+                {post.author}</small
               >
             </p>
 
@@ -131,22 +150,29 @@ const recommendedPosts = getRecommendedPosts(post.id);
           <div class="bg-white p-4 rounded shadow-sm mb-4">
             <h5 class="text-success mb-3">Etiquetas</h5>
             <div class="d-flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <span class="badge bg-success">{tag}</span>
-              ))}
+              {
+                post.tags.map((tag) => (
+                  <span class="badge bg-success">{tag}</span>
+                ))
+              }
             </div>
           </div>
 
           <div class="bg-white p-4 rounded shadow-sm">
             <h5 class="text-success mb-3">Recomendados</h5>
             <ul class="list-unstyled mb-0">
-              {recommendedPosts.map((recPost) => (
-                <li class="mb-2">
-                  <a href={`/post/${recPost.slug}`} class="text-dark text-decoration-none">
-                    {recPost.title}
-                  </a>
-                </li>
-              ))}
+              {
+                recommendedPosts.map((recPost) => (
+                  <li class="mb-2">
+                    <a
+                      href={`/post/${recPost.slug}`}
+                      class="text-dark text-decoration-none"
+                    >
+                      {recPost.title}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </aside>
@@ -160,7 +186,8 @@ const recommendedPosts = getRecommendedPosts(post.id);
             data-href={`https://popular-esmedellin.com/post/${post.slug}`}
             data-width="100%"
             data-numposts="5"
-          ></div>
+          >
+          </div>
         </div>
       </div>
     </div>
@@ -181,14 +208,16 @@ const recommendedPosts = getRecommendedPosts(post.id);
 
 <script>
   // Facebook SDK initialization
-  if (typeof window !== 'undefined') {
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
+  if (typeof window !== "undefined") {
+    (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s);
       js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0&autoLogAppEvents=1";
+      js.src =
+        "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0&autoLogAppEvents=1";
       fjs.parentNode?.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+    })(document, "script", "facebook-jssdk");
   }
 </script>

@@ -4,6 +4,7 @@ export interface Post {
   title: string;
   subtitle: string;
   image: string;
+  images: string[]; // Nuevo arreglo de imágenes para el post individual
   date: string;
   author: string;
   category: string;
@@ -24,6 +25,9 @@ export const posts: Post[] = [
     title: 'Transformación de barrios populares',
     subtitle: 'Una mirada crítica a la memoria urbana y la participación comunitaria',
     image: 'https://static.wixstatic.com/media/697903_14a4e71cde2f4069a2180282fa7410a4~mv2.jpg/v1/fill/w_400,h_250,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5769_JPG.jpg',
+    images: [
+      'https://static.wixstatic.com/media/697903_14a4e71cde2f4069a2180282fa7410a4~mv2.jpg/v1/fill/w_400,h_250,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5769_JPG.jpg'
+    ],
     date: '17 de marzo de 2026',
     author: 'Grupo MASO',
     category: 'Investigación',
@@ -42,6 +46,10 @@ export const posts: Post[] = [
     title: 'Sentipensar el Barrio',
     subtitle: 'Proceso de investigación participativa en barrios populares de Medellín y favelas de Río de Janeiro, enfocado en la apropiación social del territorio y la memoria urbana.',
     image: 'https://static.wixstatic.com/media/697903_44489d95207f4048af7abcd1f5f47edd~mv2.jpeg/v1/fill/w_400,h_250,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/697903_44489d95207f4048af7abcd1f5f47edd~mv2.jpeg',
+    images: [
+      'https://static.wixstatic.com/media/697903_44489d95207f4048af7abcd1f5f47edd~mv2.jpeg/v1/fill/w_400,h_250,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/697903_44489d95207f4048af7abcd1f5f47edd~mv2.jpeg'
+      
+    ],
     date: '20 de marzo de 2026',
     author: 'Grupo MASO',
     category: 'Participación Comunitaria',
@@ -60,6 +68,9 @@ export const posts: Post[] = [
     title: 'La Memoria se Construye Caminando',
     subtitle: 'Ejercicio colectivo de reconstrucción de la memoria urbana mediante recorridos territoriales',
     image: 'https://static.wixstatic.com/media/697903_f643b0e2fffc45afb2b9a45e856e6a04~mv2_d_2592_1728_s_2.jpg/v1/fill/w_400,h_250,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/697903_f643b0e2fffc45afb2b9a45e856e6a04~mv2_d_2592_1728_s_2.jpg',
+    images: [
+      'https://static.wixstatic.com/media/697903_f643b0e2fffc45afb2b9a45e856e6a04~mv2_d_2592_1728_s_2.jpg/v1/fill/w_400,h_250,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/697903_f643b0e2fffc45afb2b9a45e856e6a04~mv2_d_2592_1728_s_2.jpg'
+    ],
     date: '19 de marzo de 2026',
     author: 'Grupo MASO',
     category: 'Memoria Urbana',
@@ -78,6 +89,7 @@ export const posts: Post[] = [
     title: 'Barrios Populares y Favelas',
     subtitle: 'Estudio comparativo entre barrios populares de Medellín y favelas de São Paulo',
     image: 'https://static.wixstatic.com/media/697903_ca928a40426c40069751ced4417c8c01~mv2_d_2592_1728_s_2.jpg/v1/fill/w_400,h_250,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/697903_ca928a40426c40069751ced4417c8c01~mv2_d_2592_1728_s_2.jpg',
+    images: [''],
     date: '21 de marzo de 2026',
     author: 'Grupo MASO',
     category: 'Transformación Social',
@@ -96,6 +108,7 @@ export const posts: Post[] = [
   title: 'Título de la Nueva Entrada',
   subtitle: 'Subtítulo descriptivo',
   image: 'https://raw.githubusercontent.com/satelite30/blog-Popular-es/refs/heads/main/WhatsApp%20Image%202026-01-28%20at%2012.38.10%20PM.jpeg',
+  images: [''],
   date: '22 de marzo de 2026',
   author: 'Grupo MASO',
   category: 'Investigación',  // O la categoría que prefieras
@@ -115,6 +128,7 @@ export const posts: Post[] = [
   title: 'Título de la Nueva Entrada',
   subtitle: 'Subtítulo descriptivo',
   image: 'https://raw.githubusercontent.com/satelite30/blog-Popular-es/refs/heads/main/WhatsApp%20Image%202026-01-28%20at%2012.50.57%20PM.jpeg',
+  images: [''],
   date: '22 de marzo de 2026',
   author: 'Grupo MASO',
   category: 'Investigación',
@@ -134,6 +148,7 @@ export const posts: Post[] = [
   title: 'Recorrido Cultural Barrial',
   subtitle: 'Explorando historias y tradiciones en cada esquina',
   image: 'https://via.placeholder.com/400x250?text=Barrio+7',
+  images: [''],
   date: '23 de marzo de 2026',
   author: 'Equipo MASO',
   category: 'Memoria Urbana',
@@ -152,6 +167,7 @@ export const posts: Post[] = [
   title: 'Huellas en Espacios Públicos',
   subtitle: 'Acciones comunitarias para transformar plazas y parques',
   image: 'https://via.placeholder.com/400x250?text=Plaza+8',
+  images: [''],
   date: '24 de marzo de 2026',
   author: 'Equipo MASO',
   category: 'Transformación Social',
@@ -170,6 +186,7 @@ export const posts: Post[] = [
   title: 'Memoria Digital de Barrio',
   subtitle: 'Archivo colaborativo con fotos y relatos',
   image: 'https://via.placeholder.com/400x250?text=Digital+9',
+  images: [''],
   date: '25 de marzo de 2026',
   author: 'Comunidad MASO',
   category: 'Investigación',
@@ -188,6 +205,7 @@ export const posts: Post[] = [
   title: 'Arte Urbano y Memoria',
   subtitle: 'Muralismo colectivo para narrar historias de resistencia',
   image: 'https://via.placeholder.com/400x250?text=Arte+10',
+  images: [''],
   date: '26 de marzo de 2026',
   author: 'Colectivo Creativo',
   category: 'Participación Comunitaria',
@@ -206,6 +224,7 @@ export const posts: Post[] = [
   title: 'Jóvenes Protagonistas del Cambio',
   subtitle: 'Iniciativas juveniles para incidir en políticas locales',
   image: 'https://via.placeholder.com/400x250?text=Jovenes+11',
+  images: [''],
   date: '27 de marzo de 2026',
   author: 'Juventud MASO',
   category: 'Transformación Social',
@@ -224,6 +243,7 @@ export const posts: Post[] = [
   title: 'Ecología Urbana en Común',
   subtitle: 'Proyectos de huertos compartidos y reciclaje',
   image: 'https://via.placeholder.com/400x250?text=Huerto+12',
+  images: [''],
   date: '28 de marzo de 2026',
   author: 'Red Verde',
   category: 'Participación Comunitaria',
@@ -242,6 +262,7 @@ export const posts: Post[] = [
   title: 'Música y Revitalización Barrial',
   subtitle: 'Festivales locales como nueva forma de encuentro',
   image: 'https://via.placeholder.com/400x250?text=Musica+13',
+  images: [''],
   date: '29 de marzo de 2026',
   author: 'Colectivo Sonoro',
   category: 'Memoria Urbana',
@@ -260,6 +281,7 @@ export const posts: Post[] = [
   title: 'Patrimonio Oral de la Vecindad',
   subtitle: 'Grabaciones de testimonios y leyendas locales',
   image: 'https://via.placeholder.com/400x250?text=Oral+14',
+  images: [''],
   date: '30 de marzo de 2026',
   author: 'Museo Vivo',
   category: 'Investigación',
@@ -278,6 +300,7 @@ export const posts: Post[] = [
   title: 'Infraestructura Social Colaborativa',
   subtitle: 'Espacios de encuentro creados por vecinos para vecinos',
   image: 'https://via.placeholder.com/400x250?text=Infraestructura+15',
+  images: [''],
   date: '31 de marzo de 2026',
   author: 'Red Comunitaria',
   category: 'Transformación Social',
@@ -296,6 +319,7 @@ export const posts: Post[] = [
   title: 'Cine Comunitario de Barrio',
   subtitle: 'Programación audiovisual con enfoque territorial',
   image: 'https://via.placeholder.com/400x250?text=Cine+16',
+  images: [''],
   date: '1 de abril de 2026',
   author: 'Cine en la Esquina',
   category: 'Participación Comunitaria',
@@ -315,6 +339,7 @@ export const posts: Post[] = [
   title: 'Cine Comunitario de Barrio',
   subtitle: 'Programación audiovisual con enfoque territorial',
   image: 'https://via.placeholder.com/400x250?text=Cine+17',
+  images: [''],
   date: '1 de abril de 2026',
   author: 'Cine en la Esquina',
   category: 'Participación Comunitaria',
@@ -334,6 +359,7 @@ export const posts: Post[] = [
   title: 'Cine Comunitario de Barrio',
   subtitle: 'Programación audiovisual con enfoque territorial',
   image: 'https://via.placeholder.com/400x250?text=Cine+18',
+  images: [''],
   date: '1 de abril de 2026',
   author: 'Cine en la Esquina',
   category: 'Participación Comunitaria',
@@ -353,6 +379,7 @@ export const posts: Post[] = [
   title: 'Cine Comunitario de Barrio',
   subtitle: 'Programación audiovisual con enfoque territorial',
   image: 'https://via.placeholder.com/400x250?text=Cine+19',
+  images: [''],
   date: '1 de abril de 2026',
   author: 'Cine en la Esquina',
   category: 'Participación Comunitaria',
@@ -372,6 +399,7 @@ export const posts: Post[] = [
   title: 'Cine Comunitario de Barrio',
   subtitle: 'Programación audiovisual con enfoque territorial',
   image: 'https://via.placeholder.com/400x250?text=Cine+20',
+  images: [''],
   date: '1 de abril de 2026',
   author: 'Cine en la Esquina',
   category: 'Participación Comunitaria',
@@ -391,6 +419,7 @@ export const posts: Post[] = [
   title: 'Cine Comunitario de Barrio',
   subtitle: 'Programación audiovisual con enfoque territorial',
   image: 'https://via.placeholder.com/400x250?text=Cine+21',
+  images: [''],
   date: '1 de abril de 2026',
   author: 'Cine en la Esquina',
   category: 'Participación Comunitaria',
